@@ -34,11 +34,10 @@ class DailyReminder : BroadcastReceiver() {
     //TODO 12 : Implement daily reminder for every 06.00 a.m using AlarmManager
     fun setDailyReminder(context: Context) {
         val calendar = Calendar.getInstance()
-        calendar.apply {
-            set(Calendar.HOUR_OF_DAY, 6)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-        }
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.set(Calendar.HOUR_OF_DAY, 6)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
 
         val alarm = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 

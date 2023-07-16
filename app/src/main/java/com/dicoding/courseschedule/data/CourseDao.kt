@@ -6,9 +6,9 @@ import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 
 //TODO 2 : Define data access object (DAO)
+
 @Dao
 interface CourseDao {
-
     @RawQuery(observedEntities = [Course::class])
     fun getNearestSchedule(query: SupportSQLiteQuery): LiveData<Course?>
 
@@ -18,7 +18,7 @@ interface CourseDao {
     @Query("select * from course where id = :id")
     fun getCourse(id: Int): LiveData<Course>
 
-    @Query("select * from course where day = :day order by startTime asc")
+    @Query("SELECT * FROM course WHERE day = :day")
     fun getTodaySchedule(day: Int): List<Course>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -29,4 +29,5 @@ interface CourseDao {
 
     @Query("select * from course order by :params")
     fun sort(params: String): DataSource.Factory<Int, Course>
+
 }

@@ -32,6 +32,8 @@ class CourseAdapter(private val clickListener: (Course) -> Unit) :
 
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val courses = getItem(position) as Course
+
         holder.bind(courses, clickListener)
     }
+
 }

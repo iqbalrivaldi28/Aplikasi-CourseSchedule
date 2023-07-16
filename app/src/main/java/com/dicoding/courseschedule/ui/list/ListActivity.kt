@@ -53,10 +53,11 @@ class ListActivity : AppCompatActivity() {
 
     private fun onCourseClick(course: Course) {
         //TODO 8 : Intent and show detailed course
-        val intent = Intent(this, DetailActivity::class.java).apply {
+        val i = Intent(this, DetailActivity::class.java).apply {
             putExtra(DetailActivity.COURSE_ID, course.id)
         }
-        startActivity(intent)
+
+        startActivity(i)
     }
 
     private fun initAction() {
@@ -77,8 +78,9 @@ class ListActivity : AppCompatActivity() {
     private fun setFabClick() {
         //TODO 9 : Create AddCourseActivity to set new course schedule
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            val addCourse = Intent(this, AddCourseActivity::class.java)
-            startActivity(addCourse)
+            val addNewCourse = Intent(this, AddCourseActivity::class.java)
+
+            startActivity(addNewCourse)
         }
     }
 
